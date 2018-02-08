@@ -49,7 +49,7 @@ xxd $OUTDATA_FILEPATH
 if [ $CRYPT_TYPE == "decrypt" ]
 then
 	echo "Calculated hash:"
-	xxd -l 224 -p $OUTDATA_FILEPATH | xxd -r -p | openssl sha -sha256
+	xxd -l 224 -p $OUTDATA_FILEPATH | xxd -r -p | openssl sha1 -sha256
 fi
 
 if [ $# -ge 6 ]
@@ -57,4 +57,3 @@ then
 	xxd -s 144 -l 112 -p $OUTDATA_FILEPATH | xxd -r -p > $6
 	echo "Wrote the console-unique key-generation area to the specified path."
 fi
-
